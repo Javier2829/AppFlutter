@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => clickme(),
+            onPressed: () => clickme(context),
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
             ),
@@ -62,8 +62,10 @@ class _LoginState extends State<Login> {
   }
 }
 
-void clickme() {
+void clickme(context) {
   if (kDebugMode) {
+    Navigator.pushReplacementNamed(context, 'home');
+
     print('clickme');
   }
 }

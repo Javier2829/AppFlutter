@@ -1,6 +1,9 @@
 // ignore_for_file: file_names
 
-import 'package:appcontrol/login.dart';
+import 'package:appcontrol/src/pages/home.dart';
+import 'package:appcontrol/src/pages/login.dart';
+import 'package:appcontrol/src/pages/regreso_screen.dart';
+import 'package:appcontrol/src/pages/salida_screen.dart';
 import 'package:flutter/material.dart'
     show
         Brightness,
@@ -36,7 +39,13 @@ class MyApp extends StatelessWidget {
               displayColor: colorText,
             ),
       ),
-      home: const Login(),
+      initialRoute: 'login',
+      routes: {
+        'login': (context) => const Login(),
+        'home': (context) => const homeScreen(),
+        'salida': (context) => const salida_screen(),
+        'regreso': (context) => const regreso_screen(),
+      },
     );
   }
 }
