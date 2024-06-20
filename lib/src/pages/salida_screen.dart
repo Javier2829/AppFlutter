@@ -19,7 +19,7 @@ class _salida_screenState extends State<salida_screen> {
       body: Center(
         child: Card(
           elevation: 10,
-          color: Colors.grey,
+          color: Colors.white54,
           shadowColor: Colors.green,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -50,7 +50,7 @@ class _salida_screenState extends State<salida_screen> {
                   maxLines: 1,
                   maxLength: 6,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 5),
                 const TextField(
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),

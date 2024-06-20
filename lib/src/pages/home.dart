@@ -66,10 +66,10 @@ class homeScreen extends StatelessWidget {
 
 void _regreso(BuildContext context) {
   Navigator.pushNamed(context, 'regreso');
-  print('regreso');
+//  print('regreso');
 }
 
 void _salida(BuildContext context) {
   Navigator.pushNamed(context, 'salida');
-  print('salida');
+  //print('salida');
 }
