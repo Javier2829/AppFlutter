@@ -19,8 +19,8 @@ class _regreso_screenState extends State<regreso_screen> {
           child: Card(
             color: Colors.white54,
             child: SizedBox(
-              height: 300,
-              width: 200,
+              height: 400,
+              width: 400,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -53,12 +53,11 @@ class _regreso_screenState extends State<regreso_screen> {
                   ElevatedButton(
                     onPressed: () => _registrarRegreso(context),
                     style: ElevatedButton.styleFrom(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    backgroundColor: Colors.blueGrey ),
-
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        backgroundColor: Colors.blueGrey),
                     child: const Text('kilometraje'),
                   ),
                 ],

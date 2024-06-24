@@ -24,10 +24,10 @@ class _salida_screenState extends State<salida_screen> {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
-          margin: const EdgeInsets.all(10),
+          margin: const EdgeInsets.all(5),
           child: SizedBox(
             width: 300,
-            height: 350,
+            height: 300,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

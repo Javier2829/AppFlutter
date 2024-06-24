@@ -1,7 +1,10 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, no_leading_underscores_for_local_identifiers
 
+import 'package:appcontrol/src/pages/home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,8 +14,25 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  _clickme(_usuario) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (kDebugMode) {
+      setState(() {
+        prefs.setString('user', _usuario);
+        Navigator.pushReplacementNamed(context, 'home');
+      });
+
+      // ignore: use_build_context_synchronously
+
+      print('clickme');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController _usuario = TextEditingController(text: '');
+    TextEditingController _contrasena = TextEditingController(text: '');
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -26,10 +46,11 @@ class _LoginState extends State<Login> {
                 decoration: TextDecoration.none),
           ),
           const SizedBox(height: 20),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: InputDecoration(
+              controller: _usuario,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Usuario',
               ),
@@ -38,10 +59,11 @@ class _LoginState extends State<Login> {
             ),
           ),
           const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: InputDecoration(
+              controller: _contrasena,
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Contraseña',
               ),
@@ -50,7 +72,7 @@ class _LoginState extends State<Login> {
             ),
           ),
           ElevatedButton(
-            onPressed: () => clickme(context),
+            onPressed: () => _clickme('user'),
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all<Color>(Colors.blue),
             ),
@@ -59,13 +81,5 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
-  }
-}
-
-void clickme(context) {
-  if (kDebugMode) {
-    Navigator.pushReplacementNamed(context, 'home');
-
-    print('clickme');
   }
 }

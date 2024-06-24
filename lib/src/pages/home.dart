@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
+import 'package:shared_preferences/shared_preferences.dart';
 
-// ignore: camel_case_types
-class homeScreen extends StatelessWidget {
+class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
+
+  @override
+  State<homeScreen> createState() => _homeScreenState();
+}
+
+class _homeScreenState extends State<homeScreen> {
+  var user = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _cargar_preferense;
+  }
+
+  // ignore: non_constant_identifier_names
+  _cargar_preferense() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      user = prefs.getString('user')!;
+      print(user);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +39,8 @@ class homeScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const Text('Hola home screen'),
+            Text('Hola $user'),
+            const Text('Bienvenido al home screen'),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -55,8 +79,9 @@ class homeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                //campo para mostrar los datos
               ],
-            )
+            ),
           ],
         ),
       ),
